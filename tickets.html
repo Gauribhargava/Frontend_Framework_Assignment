@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Kit</title>
+    <!-- Google Fonts: Muli -->
+    <link href="https://fonts.googleapis.com/css2?family=Muli:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Muli', sans-serif;
+            background-color: #f7f8fc;
+        }
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            position: fixed;
+            background-color: #363740;
+            color: white;
+            padding: 20px;
+        }
+        .sidebar h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+        .nav-link {
+            color: #a4a6b3;
+            font-size: 0.9rem;
+            padding: 10px 0;
+        }
+        .nav-link:hover {
+            color: white;
+        }
+        .main-content {
+            margin-left: 250px;
+            padding: 20px;
+            background-color: white;
+            min-height: 100vh;
+            width: 100vw;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 15px;
+        }
+        .user-profile {
+            display: flex;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+        .user-profile img {
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            margin-left: 10px;
+        }
+        .card {
+            border: none;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+        .table {
+            margin-top: 20px;
+        }
+        .table img {
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            margin-right: 10px;
+        }
+        .ticket-details {
+            display: flex;
+            align-items: center;
+        }
+        .ticket-description {
+            margin-left: 10px;
+        }
+        .ticket-info {
+            font-size: 0.85rem;
+            color: #6b7280; /* Gray text for extra info */
+        }
+        .badge {
+            font-size: 0.8rem;
+            padding: 5px 10px;
+        }
+        .options-icon {
+            cursor: pointer;
+        }
+        .pagination-container {
+            display: flex;
+            flex-direction: row-reverse;
+            /* justify-content: space-between; */
+            align-items: center;
+            margin-top: 20px;
+        }
+        .pagination-controls {
+            display: flex;
+            align-items: center;
+        }
+        .pagination-controls select,
+        .pagination-controls span {
+            margin-right: 15px;
+        }
+        .pagination-buttons {
+            display: flex;
+            align-items: center;
+        }
+        .pagination-buttons button {
+            border: none;
+            background: transparent;
+            color: #6b7280;
+            font-size: 1.2rem;
+            cursor: pointer;
+            margin: 0 5px;
+        }
+        .pagination-buttons button:hover {
+            color: black;
+        }
+        .pagination-info {
+            color: #6b7280;
+        }
+        .pagination-controls select {
+        border: none; /* Remove the border */
+        background-color: transparent; /* Optional: make the background transparent */
+        font-size: 1rem; /* Match font size for consistency */
+        color: #6b7280; /* Optional: match the text color */
+        outline: none; /* Remove the focus outline */
+        appearance: none; /* Remove the default browser styling (like dropdown arrow) */
+        padding-right: 10px;
+        /* margin: 0; */
+        }   
+        .pagination-controls::after {
+        content: "▼"; /* Custom dropdown arrow */
+        position: absolute;
+        top: 95%; /* Vertically center */
+        right: 191px; /* Position to the right */
+        transform: translateY(-40%); /* Align perfectly in the center */
+        pointer-events: none; /* Allow clicks only on the select element */
+        font-size: 0.8rem; /* Adjust the size of the arrow */
+        color: #6b7280; /* Match the arrow color with the text */
+    }
+    </style>
+</head>
+<body>
+    <div class="d-flex">
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <h3>Dashboard Kit</h3>
+            <ul class="nav flex-column">
+                <li class="nav-item"><a href="index.html" class="nav-link">Overview</a></li>
+                <li class="nav-item"><a href="tickets.html" class="nav-link">Tickets</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Ideas</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Contacts</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Agents</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Articles</a></li>
+                <li class="nav-item mt-4"><a href="#" class="nav-link">Settings</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Subscription</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="header">
+                <h1>Tickets</h1>
+                <div class="user-profile">
+                    <span>Jones Ferdinand</span>
+                    <img src="./_header.png" alt="User Avatar">
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">All tickets</h5>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Ticket details</th>
+                                <th>Customer name</th>
+                                <th>Date</th>
+                                <th>Priority</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Row 1 -->
+                            <tr>
+                                <td>
+                                    <div class="ticket-details">
+                                        <img src="./user1.png" alt="User Avatar">
+                                        <div class="ticket-description">Contact Email not Linked</div>
+                                    </div>
+                                    
+                                </td>
+                                <td>
+                                    Tom Cruise
+                                    <div class="ticket-info">on 24.05.2019</div>
+                                    
+                                </td>
+                                <td>May 26, 2019
+                                    <div class="ticket-info">6:30 PM</div>
+                                </td>
+                                <td><span class="badge bg-danger">High</span></td>
+                                <td class="options-icon"><i class="fas fa-ellipsis-v"></i></td>
+                            </tr>
+                            <!-- Row 2 -->
+                            <tr>
+                                <td>
+                                    <div class="ticket-details">
+                                        <img src="./user2.png" alt="User Avatar">
+                                        <div class="ticket-description">Adding Images to Featured Posts</div>
+                                    </div>
+                                    
+                                </td>
+                                <td>
+                                    Matt Damon
+                                    <div class="ticket-info">on 24.05.2019</div>
+                                </td>
+                                <td>May 26, 2019
+                                    <div class="ticket-info">8:00 AM</div>
+                                </td>
+                                <td><span class="badge bg-warning">Low</span></td>
+                                <td class="options-icon"><i class="fas fa-ellipsis-v"></i></td>
+                            </tr>
+                            <!-- Row 3 -->
+                            <tr>
+                                <td>
+                                    <div class="ticket-details">
+                                        <img src="./user3.png" alt="User Avatar">
+                                        <div class="ticket-description">When will I be charged this month?</div>
+                                    </div>
+                                    
+                                </td>
+                                <td>
+                                    Robert Downey
+                                    <div class="ticket-info">on 24.05.2019</div>
+                                </td>
+                                <td>May 26, 2019
+                                    <div class="ticket-info">7:30 PM</div>
+                                </td>
+                                <td><span class="badge bg-danger">High</span></td>
+                                <td class="options-icon"><i class="fas fa-ellipsis-v"></i></td>
+                            </tr>
+                            <!-- Row 4 -->
+                            <tr>
+                                <td>
+                                    <div class="ticket-details">
+                                        <img src="./user4.png" alt="User Avatar">
+                                        <div class="ticket-description">Payment not going through</div>
+                                    </div>
+                                    
+                                </td>
+                                <td>
+                                    Christian Bale
+                                    <div class="ticket-info">on 24.05.2019</div>
+                                </td>
+                                <td>May 25, 2019
+                                    <div class="ticket-info">5:00 PM</div>
+                                </td>
+                                <td><span class="badge bg-success">Normal</span></td>
+                                <td class="options-icon"><i class="fas fa-ellipsis-v"></i></td>
+                            </tr>
+                            <!-- Row 5 -->
+                            <tr>
+                                <td>
+                                    <div class="ticket-details">
+                                        <img src="./user5.png" alt="User Avatar">
+                                        <div class="ticket-description">Unable to add replies</div>
+                                    </div>
+                                    
+                                </td>
+                                <td>
+                                    Henry Cavil
+                                    <div class="ticket-info">on 24.05.2019</div>
+                                </td>
+                                <td>May 25, 2019
+                                    <div class="ticket-info">4:00 PM</div>
+                                </td>
+                                <td><span class="badge bg-danger">High</span></td>
+                                <td class="options-icon"><i class="fas fa-ellipsis-v"></i></td>
+                            </tr>
+                            <!-- Row 6 -->
+                            <tr>
+                                <td>
+                                    <div class="ticket-details">
+                                        <img src="./user6.png" alt="User Avatar">
+                                        <div class="ticket-description">Downtime since last week</div>
+                                    </div>
+                                    
+                                </td>
+                                <td>
+                                    Chris Evans
+                                    <div class="ticket-info">on 23.05.2019</div>
+                                </td>
+                                <td>May 25, 2019
+                                    <div class="ticket-info">2:00 PM</div>
+                                </td>
+                                <td><span class="badge bg-success">Normal</span></td>
+                                <td class="options-icon"><i class="fas fa-ellipsis-v"></i></td>
+                            </tr>
+                            <!-- Row 7 -->
+                            <tr>
+                                <td>
+                                    <div class="ticket-details">
+                                        <img src="./user7.png" alt="User Avatar">
+                                        <div class="ticket-description">Referral Bonus</div>
+                                    </div>
+                                    
+                                </td>
+                                <td>
+                                    Sam Smith
+                                    <div class="ticket-info">on 22.05.2019</div>
+                                </td>
+                                <td>May 25, 2019
+                                    <div class="ticket-info">11:30 AM</div>
+                                </td>
+                                <td><span class="badge bg-warning">Low</span></td>
+                                <td class="options-icon"><i class="fas fa-ellipsis-v"></i></td>
+                            </tr>
+                            <!-- Row 8 -->
+                            <tr>
+                                <td>
+                                    <div class="ticket-details">
+                                        <img src="./user8.png" alt="User Avatar">
+                                        <div class="ticket-description">How do I change my password?</div>
+                                    </div>
+                                    
+                                </td>
+                                <td>
+                                    Steve Rogers
+                                    <div class="ticket-info">on 21.05.2019</div>
+                                </td>
+                                <td>May 24, 2019
+                                    <div class="ticket-info">1:00 PM</div>
+                                </td>
+                                <td><span class="badge bg-success">Normal</span></td>
+                                <td class="options-icon"><i class="fas fa-ellipsis-v"></i></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="pagination-container">
+                        <div class="pagination-buttons">
+                            <button><i class="fas fa-chevron-left"></i></button>
+                            <button><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                        <div class="pagination-controls">
+                            <span class="pagination-info">Rows per page:</span>
+                            <select class="select-icon">
+                                <option>8</option>
+                                
+                            </select>
+                            <span class="pagination-info">1-8 of 1240</span>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
